@@ -1,0 +1,43 @@
+{
+  "name": "jade-express",
+  "description": "Jade express is a recursive compiler (and middleware), compile all your jade to make it available in cache for fast rendering.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Julien Valéry",
+    "email": "darul75@gmail.com"
+  },
+  "homepage": "https://github.com/darul75/jade-express",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darul75/jade-express.git"
+  },  
+  "keywords": [
+    "jade",
+    "compiler",
+    "cache",
+    "template"    
+  ],
+  "main": "./index.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "engines": {
+    "node": ">=0.6.x"
+  },
+  "dependencies": {
+    "jade": "0.35.0"
+  },
+  "devDependencies": {
+    "benchmark": ">=0.0.1",
+    "expect.js": "0.2.0",
+    "express": "3.4.0",
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-uglify": "latest",
+    "mocha": ">= 0.10.2",
+    "supertest": "0.8.1"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  }
+}
