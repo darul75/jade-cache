@@ -1,15 +1,15 @@
 {
-  "name": "jade-express",
-  "description": "Jade express is a recursive compiler (and middleware), compile all your jade to make it available in cache for fast rendering.",
+  "name": "jade-cache",
+  "description": "Jade cache is a recursive compiler (and middleware), compile all your jade to make it available in cache for fast rendering.",
   "version": "0.0.1",
   "author": {
     "name": "Julien Valéry",
     "email": "darul75@gmail.com"
   },
-  "homepage": "https://github.com/darul75/jade-express",
+  "homepage": "https://github.com/darul75/jade-cache",
   "repository": {
     "type": "git",
-    "url": "https://github.com/darul75/jade-express.git"
+    "url": "https://github.com/darul75/jade-cache.git"
   },  
   "keywords": [
     "jade",
