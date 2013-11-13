@@ -13,7 +13,7 @@
     // defaults
     var o = {        
         debug: true,        
-        routes: ['/partialsdd'],
+        routes: ['/partials'],
         views: 'views',
         exclude: ['.svn', '.DS_Store'],
         cache: 'jade-compiled-templates'        
