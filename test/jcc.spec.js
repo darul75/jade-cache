@@ -11,24 +11,22 @@ describe('i18next.server.spec', function() {
   var app;
 
   before(function(done) {
-    app = express();
+    app = express({debug:true});
     app.configure(function() {
       app.set('views', __dirname + '/views');
       app.set('view engine', 'jade');
       app.use(jcc.handle);
       // app.use(express.logger('dev'));
-      app.use(function(req, res, next){    
+     /* app.use(function(req, res, next){    
         if (req.path.indexOf('nocompile') > -1)
           res.render(req.path.slice(1,req.path.length));
         else
           return next();
-      });
+      });*/
     });
 
     opts = {
-      ignoreRoutes: ['nocompile', 'zoubida'],
-      debug: true,
-      on: true      
+      debug: false
     };
 
     jcc.init(opts, app, function() {
@@ -36,10 +34,10 @@ describe('i18next.server.spec', function() {
       done();
     });
 
-    app.use(function(req, res){
+  /*  app.use(function(req, res){
       res.statusCode = 404;
       res.end('sorry!');
-    });
+    });*/
   });
 
   describe('jcc compile jade', function(){
@@ -112,11 +110,9 @@ describe('i18next.server.spec', function() {
       });
     });
 
-    describe('with small content1 compiled second load'.green, function(){
+    describe('with small content1 compiled second load with cache'.green, function(){
       it('should respond with nice html', function(done){
-          var cms = Date.now();
-
-          app.set('view cache', false);
+          var cms = Date.now();          
 
          request(app)
           .get('/partials/compiled')       
@@ -128,11 +124,37 @@ describe('i18next.server.spec', function() {
       });
     });
 
-    describe('with small content1 compiled third load'.green, function(){
+    describe('with small content1 compiled third load with cache'.green, function(){
       it('should respond with nice html', function(done){
-          var cms = Date.now();
+          var cms = Date.now();          
 
-          app.set('view cache', false);
+         request(app)
+          .get('/partials/compiled')       
+          .expect(200, '<p>hello world baby with no compile</p>', function(err, res) {
+            var cs = (Date.now() - cms) + ' ms';        
+            console.log(cs.toString().green);
+            done();
+          });
+      });
+    });
+
+    describe('with small content1 compiled fourth load with cache'.green, function(){
+      it('should respond with nice html', function(done){
+          var cms = Date.now();          
+
+         request(app)
+          .get('/partials/compiled')       
+          .expect(200, '<p>hello world baby with no compile</p>', function(err, res) {
+            var cs = (Date.now() - cms) + ' ms';        
+            console.log(cs.toString().green);
+            done();
+          });
+      });
+    });
+
+    describe('with small content1 compiled five load with cache'.green, function(){
+      it('should respond with nice html', function(done){
+          var cms = Date.now();          
 
          request(app)
           .get('/partials/compiled')       
@@ -234,6 +256,20 @@ describe('i18next.server.spec', function() {
     });
 
     describe('with bigger content2 compiled third load'.green, function(){
+      it('should respond with nice html', function(done){
+        var cms = Date.now();
+
+       request(app)
+        .get('/partials/home/example')       
+        .expect(200, function(err, res) {
+          var cs = (Date.now() - cms) + ' ms';        
+          console.log(cs.toString().green);
+          done();
+        });
+      });
+    });
+
+    describe('with bigger content2 compiled fourth load'.green, function(){
       it('should respond with nice html', function(done){
         var cms = Date.now();
 

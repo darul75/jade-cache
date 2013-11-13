@@ -29,32 +29,32 @@
         // override defaults with passed in options
         f.extend(o, options);
 
+        // start compilation
         this.compileJadeTmpl(app);
 
-        return cb();        
+        return cb();
     };
 
     jcc.handle = function(req, res, next) {        
-        var routes = jcc.options.routes;        
-        var debug = jcc.options.debug;        
+        var routes = jcc.options.routes;             
+
+        trace('debug: route: '.yellow+req.path);
         
         if (req.app.enabled('jcc')) {                 
         // check active routes            
             for (var j=0; j< routes.length;j++) 
                 if (req.path.indexOf(routes[j]) < 0) return next();                    
                    
-            if (debug)
-                console.log('debug: using jcc for route: '.blue+req.path);
+            trace('debug: using jcc for route: '.yellow+req.path);
 
             try {
-                if (!req.app.get(jcc.options.cache)[req.path]) {
-                    if (debug)
-                        console.log('this route is not in cache'.red+req.path);                    
+                var tmpl = req.app.get(jcc.options.cache)[req.path];
+                if (!tmpl) {
+                    trace('this route is not in cache'.red+req.path);
                     return next();
                 }
-                    
-                var html = req.app.get(jcc.options.cache)[req.path]();                    
-                return res.send(html);                       
+                                    
+                return res.send(tmpl());
             }
             catch (e) {
                 throw Error('jade compiled view not found for path: ' + req.path + ' activate debug option first.');
@@ -63,9 +63,7 @@
         return next();        
     };
     
-    jcc.compileJadeTmpl = function(app) {        
-        var debug = jcc.options.debug;        
-
+    jcc.compileJadeTmpl = function(app) {                  
         var templatesDir =  path.resolve(app.get('views'));          
         viewPath = templatesDir;
 
@@ -100,25 +98,28 @@
             }
             else {
                  if (path.extname(filepath) !== jadeExt) {
-                    if (debug)
-                        console.log('debug: '.blue+ file + ' is not a jade file, might not be placed here.'.blue);
+                    trace('debug: '.yellow+ file + ' is not a jade file, might not be placed here.'.yellow);
                     continue;
                 }
                 try {                    
                     fn = jade.compile(fs.readFileSync(path.resolve(dir, file), 'utf8'), {filename: dir+'/'+file});
                     var keyTemplate = filepath.replace(viewPath, '').replace(jadeExt, '');                                 
-                    if (debug)
-                        console.log('debug: file '.blue+ file + ' compiled, put in cache (key) route: '.blue + keyTemplate);
+                    trace('debug: file '.yellow+ file + ' compiled, put in cache (key) route: '.yellow + keyTemplate);
                     compiledTemplates[keyTemplate] = fn;
                 }
                 catch (e) {
-                    console.log('error while compiling'.red + filepath.red);
+                    trace('error while compiling'.red + filepath.red);
                 }
             }        
             level = '';                                
         }
 
         level += '/';
+    };
+
+    var trace = function(s) {
+        if (jcc.options.debug)
+            console.log(s);
     };
 
     // overriding for the functions
