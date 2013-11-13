@@ -1,1 +1,1 @@
-module.exports = require('./src/jcc');
+module.exports = require('./lib/jcc');
