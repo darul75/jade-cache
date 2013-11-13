@@ -48,7 +48,7 @@
             trace('debug: using jcc for route: '.yellow+req.path);
 
             try {
-                var tmpl = req.app.get(jcc.options.cache)[req.path];
+                var tmpl = compiledTemplates[req.path];
                 if (!tmpl) {
                     trace('this route is not in cache'.red+req.path);
                     return next();
