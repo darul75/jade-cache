@@ -1,6 +1,6 @@
 # jade-cache 
 
-**jade-cache** purpose is help you to deal with jade view into your code, made for ExpressJs I do not know about others.
+**jade-cache** is designed to help you to deal with jade view into your code, made for ExpressJs I do not know about others.
 
 * `cache` : compile all jade views at startup into templates in one shot and recursive.
 * `middleware` specific route catcher to render these cached templates.
@@ -78,7 +78,8 @@ Keep it mind this middleware has sense specially for "partials" jade views with 
 
 See http://jade-lang.com/api/ for more info.
 
-By default all `/partials/...` route will use this middleware, `/partials/view1.jade', '/partials/folder1/view2'.
+By default all `/partials/...` route will use this middleware, `/partials/view1.jade', '/partials/folder1/view2'. Other route will still be using
+normal express engine process with jade cache if in production.
 
 But you can add some route or change it in options.
 
@@ -88,7 +89,7 @@ var jcc = require('jcc');
 app.configure(function() {
       app.set('views', __dirname + '/views');
       app.set('view engine', 'jade');
-      app.use(jcc.handle);
+      app.use(jcc.handle); // activate middleware
       ...
 });
 
