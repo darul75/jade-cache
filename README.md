@@ -1,4 +1,4 @@
-# jade-cache 
+# jade-cache [![NPM version](https://badge.fury.io/js/jade-cache.png)](http://badge.fury.io/js/jade-cache)
 
 **jade-cache** is designed to help you to deal with jade view into your code, made for ExpressJs I do not know about others.
 
