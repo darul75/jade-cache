@@ -12,8 +12,6 @@ I needed it for emails templating and started by simply compile specific view in
 
 Then a lot of my "partials" view can be rendered too without the need to make a specific route, mine was
 
-And play little bit, see how node core, express, jade are working.
-
 ```javascript
 app.get('partials/:id/:name')
 
@@ -25,6 +23,9 @@ function(req, res) {
 ```
 
 So I have choosed a solution with a small middleware. I will try explain you later how to use it.
+
+
+And play little bit, see how node core, express, jade are working.
 
 ## Install
 
