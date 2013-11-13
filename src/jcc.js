@@ -13,7 +13,7 @@
     // defaults
     var o = {        
         debug: true,        
-        routes: ['partials'],
+        routes: ['/partialsdd'],
         views: 'views',
         exclude: ['.svn', '.DS_Store'],
         cache: 'jade-compiled-templates'        
@@ -40,10 +40,10 @@
 
         trace('debug: route: '.yellow+req.path);
         
-        if (req.app.enabled('jcc')) {                 
+        if (req.app.enabled('jcc')) {       
         // check active routes            
             for (var j=0; j< routes.length;j++) 
-                if (req.path.indexOf(routes[j]) < 0) return next();                    
+                if (req.path.indexOf(routes[j]) !== 0) return next();                    
                    
             trace('debug: using jcc for route: '.yellow+req.path);
 

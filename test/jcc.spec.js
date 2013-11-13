@@ -27,7 +27,7 @@ describe('i18next.server.spec', function() {
     });
 
     opts = {
-      debug: false
+      debug: true
     };
 
     jcc.init(opts, app, function() {
