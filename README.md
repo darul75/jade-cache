@@ -59,7 +59,7 @@ req.app.get('jade-compiled-templates')['/path-to/jade-view']({email:'darul75@gma
 // 'email' is your view variable
 // 'jade-compiled-templates' is default cache name
 ```
-With debug mode set console output show template `key` to use with cache '/partials/home/example' for instance.
+With `debug` option set, console output shows template `key` to use when calling cache : '/partials/home/example' for instance.
 
 ```
 - file .DS_Store' is not a jade file, might not be placed here.
@@ -74,12 +74,11 @@ With debug mode set console output show template `key` to use with cache '/parti
 
 ### Middleware
 
-Keep it mind this middleware has sense specially for "partials" jade views with no jade "variables" to be processed in view: #{var}
+Keep it mind this middleware has sense specially for "partials" jade views with no "variables" to be processed in view: #{var}
 
 See http://jade-lang.com/api/ for more info.
 
-By default all `/partials/...` route will use this middleware, `/partials/view1.jade', '/partials/folder1/view2'. Other route will still be using
-normal express engine process with jade cache if in production.
+By default all `/partials/...` route will use this middleware, `/partials/view1.jade', '/partials/folder1/view2'. Other view route will still being rendered by native express jade engine and with jade native cache if in production.
 
 But you can add some route or change it in options.
 
