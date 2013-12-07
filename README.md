@@ -1,4 +1,4 @@
-# jade-cache [![NPM version](https://badge.fury.io/js/jade-cache.png)](http://badge.fury.io/js/jade-cache) [![Build Status](https://travis-ci.org/darul75/jade-cache.png?branch=master)](https://travis-ci.org/darul75/jade-cache)
+# jade-cache [![NPM version](https://badge.fury.io/js/jade-cache.png)](http://badge.fury.io/js/jade-cache) [![Build Status](https://travis-ci.org/darul75/jade-cache.png?branch=master)](https://travis-ci.org/darul75/jade-cache) [![Total views](https://sourcegraph.com/api/repos/github.com/darul75/jade-cache/counters/views.png)](https://sourcegraph.com/github.com/darul75/jade-cache)
 
 **jade-cache** is designed to help you to deal with jade view into your code, made for ExpressJs I do not know about others.
 
