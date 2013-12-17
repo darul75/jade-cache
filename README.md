@@ -37,7 +37,7 @@ npm install jade-cache
 Done by default, all your views are put in cache at application boot.
 
 ```javascript
-var jcc = require('jcc');
+var jcc = require('jade-cache');
 
 app.configure(function() {
       app.set('views', __dirname + '/views');
@@ -83,7 +83,7 @@ By default all `/partials/...` route will use this middleware, `/partials/view1.
 But you can add some route or change it in options.
 
 ```javascript
-var jcc = require('jcc');
+var jcc = require('jade-cache');
 
 app.configure(function() {
       app.set('views', __dirname + '/views');
