@@ -12,7 +12,7 @@
 
     // defaults
     var o = {        
-        debug: true,        
+        debug: false,        
         routes: ['/partials'],
         views: 'views',
         exclude: ['.svn', '.DS_Store'],
