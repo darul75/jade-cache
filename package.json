@@ -1,7 +1,7 @@
 {
   "name": "jade-cache",
   "description": "Jade cache is a recursive compiler (and middleware), compile all your jade to make it available in cache for fast rendering.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": {
     "name": "Julien Valéry",
     "email": "darul75@gmail.com"
