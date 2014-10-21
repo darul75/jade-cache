@@ -121,6 +121,10 @@ req.app.get('jade-compiled-templates')['/path-to/jade-view']({email:'darul75@gma
 - `routes` : routes matching middleware use, keep it mind do not handle jade variables because simply call template with no parameter, default `'/partials'`
 - `cache`: cache name, default `'jade-compiled-templates'`  
 
+## Metrics
+
+[![NPM](https://nodei.co/npm/jade-cache.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/jade-cache/)
+
 ## License
 
 The MIT License (MIT)
